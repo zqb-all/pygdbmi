@@ -205,7 +205,7 @@ class IoManager:
             return responses
 
         response_list = list(
-            filter(lambda x: x, _new_output.decode(errors="replace").split("\n"))
+            filter(lambda x: x, _new_output.replace(b"\\t", b"\t").decode(errors="replace").split("\n"))
         )  # remove blank lines
 
         # parse each response from gdb into a dict, and store in a list
